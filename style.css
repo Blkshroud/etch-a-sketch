@@ -1,0 +1,25 @@
+body{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+#container{
+    display: flex;
+    flex-wrap:  wrap;
+    width: 500px;
+    border: 1px solid black;
+}
+
+#empty{
+    background-color: white;
+}
+
+#empty, #filled{
+    flex: 6.25%;
+    padding-top: 6.25%;
+}
+
+#filled{
+    background-color: black;
+}
