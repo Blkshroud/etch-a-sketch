@@ -11,15 +11,17 @@ body{
     border: 1px solid black;
 }
 
-#empty{
+.empty{
     background-color: white;
 }
 
-#empty, #filled{
+.empty, .filled{
     flex: 6.25%;
     padding-top: 6.25%;
+    box-sizing: border-box;
+
 }
 
-#filled{
+.filled{
     background-color: black;
 }
