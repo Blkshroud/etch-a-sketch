@@ -17,12 +17,12 @@ body{
 
 
 .filled{
-    background-color: black;
+    background-color: rgba(0, 0, 0, 1);
 }
 
 .header{
     display: flex;
-    gap: 50px;
+    gap: 25px;
     align-items: center;
 }
 
