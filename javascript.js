@@ -2,6 +2,11 @@ const container = document.querySelector("#container");
 let divAmount = 16;
 const resetBtn = document.querySelector(".reset");
 resetBtn.addEventListener("click", resetBox);
+const resizeBtn = document.querySelector(".resize");
+resizeBtn.addEventListener("click", () => {
+    divAmount = +prompt("Enter a value between 1-100");
+    resetBox();
+})
 
 function initializeBox(){
     for(let i = 0;i< (divAmount*divAmount);i++){
@@ -24,8 +29,6 @@ function resetBox(){
     initializeBox();
 }
 
-function getNewSize(){
 
-}
 
 initializeBox();
