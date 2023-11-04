@@ -15,12 +15,6 @@ body{
     background-color: white;
 }
 
-.empty, .filled{
-    flex: 6.25%;
-    padding-top: 6.25%;
-    box-sizing: border-box;
-
-}
 
 .filled{
     background-color: black;
