@@ -1,9 +1,11 @@
 const container = document.querySelector("#container");
+
 let divAmount = 16;
+
 const resetBtn = document.querySelector(".reset");
 resetBtn.addEventListener("click", resetBox);
-const resizeBtn = document.querySelector(".resize");
 
+const resizeBtn = document.querySelector(".resize");
 resizeBtn.addEventListener("click", resizeBox);
 
 function initializeBox(){
@@ -13,13 +15,36 @@ function initializeBox(){
         divBox.style.flex = (100/divAmount) + "%";
         divBox.style.paddingTop = (100/divAmount) + "%";
         container.appendChild(divBox);
-        divBox.addEventListener("mouseover", hoverColor);
-        function hoverColor(){
+        divBox.addEventListener("mouseover", hoverBlack);
+        function hoverBlack(){
             divBox.classList.remove("empty");
             divBox.classList.add("filled");
         }
     }
 }
+
+function initializeRGBBox(){
+    while(container.firstChild){
+        container.removeChild(container.firstChild);
+    }
+    for(let i = 0;i< (divAmount*divAmount);i++){
+        let divBox = document.createElement('div');
+        divBox.classList.add("empty");
+        divBox.style.flex = (100/divAmount) + "%";
+        divBox.style.paddingTop = (100/divAmount) + "%";
+        container.appendChild(divBox);
+        divBox.addEventListener("mouseover", hoverColor);
+        function hoverColor(){
+            divBox.classList.remove("empty");
+            const randomColor = Math.floor(Math.random()*16777215).toString(16);
+            divBox.style.backgroundColor = "#" + randomColor;
+        }
+    }
+}
+
+const RGBBtn = document.querySelector(".rainbow");
+RGBBtn.addEventListener("click", initializeRGBBox);
+
 function resetBox(){
     while(container.firstChild){
         container.removeChild(container.firstChild);
