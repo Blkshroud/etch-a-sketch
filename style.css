@@ -25,3 +25,14 @@ body{
 .filled{
     background-color: black;
 }
+
+.header{
+    display: flex;
+    gap: 50px;
+    align-items: center;
+}
+
+button{
+    height: 25px;
+    cursor: pointer;
+}
