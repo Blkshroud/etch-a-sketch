@@ -3,10 +3,8 @@ let divAmount = 16;
 const resetBtn = document.querySelector(".reset");
 resetBtn.addEventListener("click", resetBox);
 const resizeBtn = document.querySelector(".resize");
-resizeBtn.addEventListener("click", () => {
-    divAmount = +prompt("Enter a value between 1-100");
-    resetBox();
-})
+
+resizeBtn.addEventListener("click", resizeBox);
 
 function initializeBox(){
     for(let i = 0;i< (divAmount*divAmount);i++){
@@ -29,6 +27,18 @@ function resetBox(){
     initializeBox();
 }
 
+function resizeBox(){
+    let divPrompt = +prompt("Enter a value between 1-100");
+    if(typeof divPrompt == 'number' && isNaN(divPrompt) != true && divPrompt >= 1 && divPrompt <= 100){
+        divAmount = divPrompt;
+        return resetBox();
+    }
+    else{
+        alert(`Answer must be a number and between 1 and 100!`);
+            // re-runs the function when an unuseable answer is given
+        return resizeBox();
+    }
+}
 
 
 initializeBox();
