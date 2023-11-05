@@ -14,8 +14,8 @@ RGBBtn.addEventListener("click", RGB);
 const blackBtn = document.querySelector(".black");
 blackBtn.addEventListener("click", black);
 
-// const grayBtn = document.querySelector(".gray");
-// grayBtn.addEventListener("click", gray);
+const grayBtn = document.querySelector(".gray");
+grayBtn.addEventListener("click", gray);
 
 function black(){
     color = 'black';
@@ -25,11 +25,11 @@ function RGB(){
     color = 'RGB';
     resetBox();
 }
-// function gray(){
-//     color = 'gray';
-//     resetBox();
-// }
-// let grayIntensity = 0.1;
+function gray(){
+    color = 'gray';
+    resetBox();
+}
+let grayIntensity = 0.1;
 
 function initializeBox(color){
     for(let i = 0;i< (divAmount*divAmount);i++){
@@ -50,12 +50,18 @@ function initializeBox(color){
                 const randomColor = Math.floor(Math.random()*16777215).toString(16);
                 divBox.style.backgroundColor = "#" + randomColor;
             }
-            // else if(color == 'gray'){
-            //     divBox.classList.remove("empty");
-            //     grayIntensity += 0.1;
-            //     divBox.style.backgroundColor = `rgba(0,0,0,${grayIntensity})`;
-
-            // }
+            else if(color == 'gray'){
+                let divStyle = window.getComputedStyle(divBox).getPropertyValue("background-color");
+                let divParts = divStyle.match(/[\d.]+/g) //returns an array of each digit/value in the background-color RGB(0, 0, 0) returns 0,0,0;
+                divBox.classList.remove("empty");
+                if(divParts.length === 3 && divParts.includes('255') == true){ //RGB has 3 values while RGBA has 4. RGBA becomes RGB when Alpha = 1
+                    divBox.style.backgroundColor = "rgba(0, 0, 0, 0.1)"
+                }
+                else if(divParts.length === 4){
+                    let divIntensity = divStyle.substring(15,17)
+                    divBox.style.backgroundColor = `rgba(0,0,0,` + (+divIntensity + 0.1) + `)`;
+                }
+            }
             else{
                 console.log("You made an oopsie in your code!");
             }
